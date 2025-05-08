@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Laporan Checklist</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h3>📊 Laporan Checklist Alat</h3>
+    <a href="/" class="btn btn-secondary mb-3">⬅️ Kembali</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Tanggal</th>
+                <th>Nama Alat</th>
+                <th>Kondisi</th>
+                <th>Keterangan</th>
+                <th>Petugas</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{ row['Tanggal'] }}</td>
+                <td>{{ row['Nama Alat'] }}</td>
+                <td>{{ row['Kondisi'] }}</td>
+                <td>{{ row['Keterangan'] }}</td>
+                <td>{{ row['Petugas'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

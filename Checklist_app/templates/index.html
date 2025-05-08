@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Alat Medis</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container mt-4">
+        <h3>📋 Daftar Alat Medis</h3>
+        <a href="/laporan" class="btn btn-info mb-3">📊 Lihat Laporan Checklist</a>
+        <p>Login sebagai: <strong>{{ current_user.username }}</strong> | 
+           <a href="/logout">Logout</a></p>
+
+        <table class="table table-bordered mt-3">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID Alat</th>
+                    <th>Nama Alat</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alat in daftar_alat %}
+                <tr>
+                    <td>{{ alat.id }}</td>
+                    <td>{{ alat.nama }}</td>
+                    <td>
+                        <a class="btn btn-sm btn-primary btn-checklist" 
+                           href="/form/alat/{{ alat.id }}" data-alat-id="{{ alat.id }}">
+                           📝 Isi Checklist
+                        </a>
+                        <a class="btn btn-sm btn-success" href="/qr/{{ alat.id }}">🔗 QR Code</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap & jQuery JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom Script -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+ 
